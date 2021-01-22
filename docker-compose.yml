@@ -1,0 +1,20 @@
+version: "3"
+ 
+services:
+  pythonmelero:
+    image: "pythonmelero"
+    #Puerto de exposición y escucha
+    ports:
+      - "5000:5000"
+    volumes:
+    networks:
+      - mynet
+    
+networks:
+  mynet:
+    driver: bridge
+
+
+#Volumenes
+#Para guardar el proyecto en directorio donde se ejecutar. docker-compose tiene que ejecutarse en esa lugar. ruta relativa
+#Para que pueda hacer uso este contenedor de aplicaciones de docker
