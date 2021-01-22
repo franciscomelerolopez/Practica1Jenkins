@@ -6,7 +6,6 @@ services:
     #Puerto de exposición y escucha
     ports:
       - "5000:5000"
-    volumes:
     networks:
       - mynet
     
