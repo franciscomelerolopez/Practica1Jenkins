@@ -12,7 +12,9 @@ COPY src/* /opt/app/
 COPY requirements.txt /opt/app/
 COPY docker-entrypoint.sh /
 
-RUN pip install -r /opt/app/requirements.txt
+RUN pip install pytest
+RUN pip install flask
+#RUN pip install -r /opt/app/requirements.txt
 
 # Cuando arranque como contenedor ejecutará este script, con todo lo queremos ejecutar en arranque del contenedor
 ENTRYPOINT "/docker-entrypoint.sh"
