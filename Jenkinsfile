@@ -32,8 +32,7 @@ pipeline {
                 echo "			  Construyendo la imagen de "
                 sh 'docker build -t $Imagen .'
                 //echo "			Tageando la imagen para poderla subir posteriormente"
-                //docker tag $Imagen franciscomelero/$Imagen
-                echo "La imagen que está creando es " $Imagen
+                //docker tag $Imagen franciscomelero/$Imagen         
                 echo "			Subiendo la imagen repositorio de docker hub"
                 sh' docker push $Imagen:latest'
                 echo "			Borrando la imagen en modo local, aunque la dejamos para que no tarde tanto"
