@@ -21,7 +21,7 @@ pipeline {
         }
         stage('Test') {
             steps {
-                python $WORKSPACE/src/main.py &'
+                sh 'python $WORKSPACE/src/main.py &''
                 cd src && pytest && cd ..
                 echo "            Puedes probarla durante 20 segundos esta aplicación en modo local"   
             }
