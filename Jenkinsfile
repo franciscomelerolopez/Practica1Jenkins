@@ -6,7 +6,7 @@ pipeline {
             steps {
                 echo "          -------------CONSTRUYENDO MI SOFTWARE/CODE"
                 echo "          Creando entorno virtual"
-                sh 'virtualenv --no-site-packages entorno_virtual'
+                sh 'virtualenv entorno_virtual'
                 echo "          Activando el entorno_virtual"
                 sh '. entorno_virtual/bin/activate'
                 sh 'pip --version'
