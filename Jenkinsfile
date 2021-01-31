@@ -42,9 +42,9 @@ pipeline {
         }
         stage('Desplegando a otros servidores') {
             steps {
-                echo "			  Enviando fichero docker-compose "
+                echo "			  Enviando fichero docker-compose "           
                 sh 'scp -i /home/jenkins/keyHLC docker-compose.yml root@51.178.25.195:/root/HLC/docker/docker-compose.yml'
-                echo ' Descargando nueva imagen en el servidor producción'
+                echo "			  Descargando imagen "
                 sh 'ssh -i /home/jenkins/keyHLC "docker pull $Imagen'
                 echo '           Parando '
                 sh 'ssh -i /home/jenkins/keyHLC "docker-compose -f /root/HLC/docker/docker-compose.yml down'
