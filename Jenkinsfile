@@ -6,16 +6,16 @@ pipeline {
             steps {
                 echo "          -------------CONSTRUYENDO MI SOFTWARE/CODE"
                 echo "          Creando entorno virtual"
-                sh 'virtualenv entorno_virtual'
+                sh 'virtualenv --no-site-packages entorno_virtual'
                 echo "          Activando el entorno_virtual"
                 sh '. entorno_virtual/bin/activate'
                 sh 'pip --version'
                 echo "          Instalando los requerimientos concretos de este proyecto"
-                //sh '. entorno_virtual/bin/pip -r install -r requirements.txt
+                sh 'pip install -r requirements.txt'
                 //echo "          Instalando aplicación para testear"
                 //sh '. entorno_virtual/bin/pip -r install pytest'
                 //echo "           Instalado aplicación/libreria necesaria para este proyecto concreto"
-                sh 'pip3 install flask'
+                //sh 'pip3 install flask'
                 echo "           Terminando de instalar requerimientos"
             }
         }
