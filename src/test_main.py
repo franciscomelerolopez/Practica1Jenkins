@@ -1,3 +1,3 @@
 from main import *
 def test_suma():
-    assert suma(3,2) == 4
+    assert suma(3,2) == 5
