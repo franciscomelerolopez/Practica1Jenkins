@@ -23,8 +23,8 @@ pipeline {
             steps {
                 echo "Ejecutando y probando"
                 sh 'python3 src/main.py &'
-                sh 'pytest src/test_main.py'
-                echo "            Puedes probarla durante 20 segundos esta aplicación en modo local"   
+                //sh 'pytest src/test_main.py'
+                //echo "            Puedes probarla durante 20 segundos esta aplicación en modo local"   
             }
         }
         stage('Deploy') {
