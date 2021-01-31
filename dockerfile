@@ -1,6 +1,6 @@
 # Creacion de imagen docker para desplegar una aplicación
 FROM ubuntu:16.04
-
+MAINTAINER "Francisco Melero"
 # Ejecuta estos comandos a partir de la imagen ubuntu, para crear una nueva imagen
 RUN apt-get update
 RUN apt-get install python python-pip -y
