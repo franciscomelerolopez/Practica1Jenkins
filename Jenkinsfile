@@ -33,24 +33,23 @@ pipeline {
                 sh 'docker build -t $Imagen .'
                 //echo "			Tageando la imagen para poderla subir posteriormente"
                 //docker tag $Imagen franciscomelero/$Imagen
+                echo "La imagen que está creando es " $Imagen
                 echo "			Subiendo la imagen repositorio de docker hub"
                 sh' docker push $Imagen:latest'
                 echo "			Borrando la imagen en modo local, aunque la dejamos para que no tarde tanto"
                 sh 'docker rmi $Imagen:latest'
             }
         }
-        stage('Desplegando') {
+        stage('Desplegando a otros servidores') {
             steps {
-                echo "			  Construyendo la imagen de "
-                sh 'scp -i /home/jenkins/keyHLC docker-compose.yml root@51.178.25.195:/root/HLC/docker'
-                sh 'ssh -i /home/jenkins/keyHLC "docker-compose -f /root/HLC/docker/docker-ompose.yml down'
-                sh 'ssh -i /home/jenkins/keyHLC "docker-compose -f /root/HLC/docker/docker-ompose.yml up -d'
-                //echo "			Tageando la imagen para poderla subir posteriormente"
-                //docker tag $Imagen franciscomelero/$Imagen
-                //echo "			Subiendo la imagen repositorio de docker hub"
-                //sh' docker push $Imagen:latest'
-                //echo "			Borrando la imagen en modo local, aunque la dejamos para que no tarde tanto"
-                //sh 'docker rmi $Imagen:latest'
+                echo "			  Enviando fichero docker-compose "
+                sh 'scp -i /home/jenkins/keyHLC docker-compose.yml root@51.178.25.195:/root/HLC/docker/docker-compose.yml'
+                echo ' Descargando nueva imagen en el servidor producción'
+                sh 'ssh -i /home/jenkins/keyHLC "docker pull $Imagen'
+                echo '           Parando '
+                sh 'ssh -i /home/jenkins/keyHLC "docker-compose -f /root/HLC/docker/docker-compose.yml down'
+                echo '           Arrancando nueva imagen '
+                sh 'ssh -i /home/jenkins/keyHLC "docker-compose -f /root/HLC/docker/docker-compose.yml up -d
             }
         }
     }   
