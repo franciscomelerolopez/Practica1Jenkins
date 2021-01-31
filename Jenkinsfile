@@ -2,7 +2,7 @@ pipeline {
     agent any
 
     stages {
-        stage('Bdfdsfuild') {
+        stage('Construir') {
             steps {
                 echo "          -------------CONSTRUYENDO MI SOFTWARE/CODE"
                 echo "          Creando entorno virtual"
