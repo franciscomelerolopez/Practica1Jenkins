@@ -9,6 +9,7 @@ pipeline {
                 sh 'virtualenv entorno_virtual'
                 echo "          Activando el entorno_virtual"
                 sh '. entorno_virtual/bin/activate'
+                sh 'pip --version'
                 echo "          Instalando los requerimientos concretos de este proyecto"
                 //sh '. entorno_virtual/bin/pip -r install -r requirements.txt
                 //echo "          Instalando aplicación para testear"
