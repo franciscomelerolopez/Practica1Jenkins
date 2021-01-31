@@ -44,7 +44,7 @@ pipeline {
                 echo "			  Enviando fichero docker-compose "           
                 sh 'scp -i /home/jenkins/keyHLC docker-compose.yml root@51.178.25.195:/root/HLC/docker/docker-compose.yml'
                 echo "			  Descargando imagen nueva en el servidor de producción"
-                sh 'ssh -i /home/jenkins/keyHLC 'docker pull $Imagen''
+                sh 'ssh -i /home/jenkins/keyHLC "docker pull $Imagen"'
                 echo "Parando servicios "
                 sh 'ssh -i /home/jenkins/keyHLC "docker-compose -f /root/HLC/docker/docker-compose.yml down"'
                 echo "           Arrancando nueva imagen "
