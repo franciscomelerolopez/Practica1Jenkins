@@ -9,10 +9,10 @@ pipeline {
                 sh 'virtualenv entorno_virtual'
                 echo "          Activando el entorno_virtual"
                 sh '. entorno_virtual/bin/activate'
-                //echo "          Instalando los requerimientos concretos de este proyecto"
-                //sh '. entorno_virtual/bin/pip install -r requirements.txt
-                echo "          Instalando aplicación para testear"
-                sh '. entorno_virtual/bin/pip -r install pytest'
+                echo "          Instalando los requerimientos concretos de este proyecto"
+                //sh '. entorno_virtual/bin/pip -r install -r requirements.txt
+                //echo "          Instalando aplicación para testear"
+                //sh '. entorno_virtual/bin/pip -r install pytest'
                 //echo "           Instalado aplicación/libreria necesaria para este proyecto concreto"
                 sh 'pip install flask'
                 echo "           Terminando de instalar requerimientos"
