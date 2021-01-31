@@ -12,8 +12,8 @@ pipeline {
                 //echo "          Instalando los requerimientos concretos de este proyecto"
                 //sh 'pip install -r requirements.txt'
                 echo "          Instalando aplicación para testear"
-                sh 'pip install pytest'
-                echo "           Instalado aplicación/libreria necesaria para este proyecto concreto"
+                //sh 'pip install pytest'
+                //echo "           Instalado aplicación/libreria necesaria para este proyecto concreto"
                 sh 'pip install flask'
                 echo "           Terminando de instalar requerimientos"
             }
