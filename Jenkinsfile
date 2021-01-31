@@ -27,7 +27,7 @@ pipeline {
                 //echo "            Puedes probarla durante 20 segundos esta aplicación en modo local"   
             }
         }
-        stage('Deploy') {
+        stage('Build Docker') {
             steps {
                 echo "			  Construyendo la imagen de "
                 sh 'docker build -t $Imagen .'
@@ -37,6 +37,20 @@ pipeline {
                 sh' docker push $Imagen:latest'
                 echo "			Borrando la imagen en modo local, aunque la dejamos para que no tarde tanto"
                 sh 'docker rmi $Imagen:latest'
+            }
+        }
+        stage('Desplegando') {
+            steps {
+                echo "			  Construyendo la imagen de "
+                sh 'scp-i /home/jenkins/keyHLC docker-compose.yml root@51.178.25.195:/root/HLC/docker'
+                sh 'ssh -i /home/jenkins/keyHLC "docker-compose -f /root/HLC/docker/docker-ompose.yml down'
+                sh 'ssh -i /home/jenkins/keyHLC "docker-compose -f /root/HLC/docker/docker-ompose.yml up -d'
+                //echo "			Tageando la imagen para poderla subir posteriormente"
+                //docker tag $Imagen franciscomelero/$Imagen
+                //echo "			Subiendo la imagen repositorio de docker hub"
+                //sh' docker push $Imagen:latest'
+                //echo "			Borrando la imagen en modo local, aunque la dejamos para que no tarde tanto"
+                //sh 'docker rmi $Imagen:latest'
             }
         }
     }   
