@@ -23,7 +23,7 @@ pipeline {
             steps {
                 echo "Ejecutando y probando"
                 sh 'python3 src/main.py &'
-                sh 'cd src && pytest && cd ..'
+                sh 'pytest src/text_main.py'
                 echo "            Puedes probarla durante 20 segundos esta aplicación en modo local"   
             }
         }
