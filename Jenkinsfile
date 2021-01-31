@@ -30,7 +30,7 @@ pipeline {
         }
         stage('ConstruyentoTest') {
             steps {
-                echo "			  Construyendo la imagen"
+                echo "			  Construyendo la imagen de "
                 docker build -t $Imagen .
                 #echo "			Tageando la imagen para poderla subir posteriormente"
                 #docker tag $Imagen franciscomelero/$Imagen
