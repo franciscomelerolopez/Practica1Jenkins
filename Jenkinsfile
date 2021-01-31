@@ -22,7 +22,7 @@ pipeline {
         stage('Test') {
             steps {
                 echo "Ejecutando y probando"
-                sh 'python ./src/main.py'
+                sh './src/main.py'
                 //cd src && pytest && cd ..
                 //echo "            Puedes probarla durante 20 segundos esta aplicación en modo local"   
             }
