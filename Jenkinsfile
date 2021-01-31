@@ -14,7 +14,7 @@ pipeline {
                 //echo "          Instalando aplicación para testear"
                 //sh '. entorno_virtual/bin/pip -r install pytest'
                 //echo "           Instalado aplicación/libreria necesaria para este proyecto concreto"
-                sh 'pip install flask'
+                sh 'pip3 install flask'
                 echo "           Terminando de instalar requerimientos"
             }
         }
