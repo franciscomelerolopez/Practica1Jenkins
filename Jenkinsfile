@@ -42,7 +42,7 @@ pipeline {
         stage('Desplegando') {
             steps {
                 echo "			  Construyendo la imagen de "
-                sh 'scp-i /home/jenkins/keyHLC docker-compose.yml root@51.178.25.195:/root/HLC/docker'
+                sh 'scp -i /home/jenkins/keyHLC docker-compose.yml root@51.178.25.195:/root/HLC/docker'
                 sh 'ssh -i /home/jenkins/keyHLC "docker-compose -f /root/HLC/docker/docker-ompose.yml down'
                 sh 'ssh -i /home/jenkins/keyHLC "docker-compose -f /root/HLC/docker/docker-ompose.yml up -d'
                 //echo "			Tageando la imagen para poderla subir posteriormente"
