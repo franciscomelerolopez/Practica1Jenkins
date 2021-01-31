@@ -10,12 +10,12 @@ pipeline {
                 echo "          Activando el entorno_virtual"
                 sh '. entorno_virtual/bin/activate'
                 //sh 'pip3 --version'
-                echo "          Instalando los requerimientos concretos de este proyecto"
-                sh 'pip3 install -r requirements.txt'
-                //echo "          Instalando aplicación para testear"
-                //sh '. entorno_virtual/bin/pip3 -r install pytest'
-                //echo "           Instalado aplicación/libreria necesaria para este proyecto concreto"
-                //sh 'pip3 install flask'
+                //echo "          Instalando los requerimientos concretos de este proyecto"
+                //sh 'pip3 install -r requirements.txt'
+                echo "          Instalando aplicación para testear"
+                sh 'pip3 install pytest'
+                echo "           Instalado aplicación/libreria necesaria para este proyecto concreto"
+                sh 'pip3 install flask'
                 echo "           Terminando de instalar requerimientos"
             }
         }
