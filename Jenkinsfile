@@ -6,7 +6,7 @@ pipeline {
             steps {
                 echo "          -------------CONSTRUYENDO MI SOFTWARE/CODE"
                 echo "          Creando entorno virtual"
-                virtualenv --python=python3 entorno_virtual
+                virtualenv entorno_virtual
                 echo "          Activando el entorno_virtual"
                 source entorno_virtual/bin/activate
                 echo "          Instalando los requerimientos concretos de este proyecto"
