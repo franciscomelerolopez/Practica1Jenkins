@@ -16,11 +16,14 @@ pipeline {
                 echo "           Instalado aplicación/libreria necesaria para este proyecto concreto"
                 sh 'pip install flask'
                 echo "           Terminando de instalar requerimientos"
+                echo "          Ejecutando la aplicación para testear en modo local sin docker"
             }
         }
         stage('Test') {
             steps {
-                echo 'Testing..'
+                python $WORKSPACE/src/main.py &'
+                cd src && pytest && cd ..
+                echo "            Puedes probarla durante 20 segundos esta aplicación en modo local"   
             }
         }
         stage('Deploy') {
