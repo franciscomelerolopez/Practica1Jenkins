@@ -8,8 +8,8 @@ pipeline {
                 echo "          Creando entorno virtual"
                 sh 'virtualenv entorno_virtual'
                 echo "          Activando el entorno_virtual"
-                sh '. .entorno_virtual/bin/activate'
-                // echo "          Instalando los requerimientos concretos de este proyecto"
+                sh '. entorno_virtual/bin/activate'
+                echo "          Instalando los requerimientos concretos de este proyecto"
                 sh 'pip install -r requirements.txt'
                 echo "          Instalando aplicación para testear"
                 sh 'pip install pytest'
