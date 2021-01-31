@@ -5,7 +5,7 @@ services:
     image: "pythonmelero"
     #Puerto de exposición y escucha
     ports:
-      - "5000:5000"
+      - "6000:5000"
     networks:
       - mynet
     
