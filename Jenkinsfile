@@ -64,14 +64,8 @@ pipeline {
             }
           }  
           stage('Desplegando con un bucle muchos servidores') {
-            steps {                
-                script{    
-                  //env.text="sh `cat servidores.txt`
-                  env.text="51.178.25.195 51.178.25.195"
-                  //sh 'echo ${text}'
-                  //sh "for value in ${text}; do echo scp -i /home/jenkins/keyHLC docker-compose.yml root@$value:/root/HLC/docker/docker-compose.yml; done"
-                  sh "for value in ${text}; do echo $value; done"
-                 }
+            steps {
+                echo "Hola"
                }
             }
         }
