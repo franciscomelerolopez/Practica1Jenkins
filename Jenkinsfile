@@ -20,6 +20,9 @@ pipeline {
             }
         }
         stage('Test') {
+            when {
+              expression { false == true }
+            }
             steps {
                 echo "Ejecutando y probando"
                 sh 'python3 src/main.py &'
@@ -28,6 +31,9 @@ pipeline {
             }
         }
         stage('Build Docker') {
+            when {
+              expression { false == true }
+            }
             steps {
                 echo "			  Construyendo la imagen de "
                 sh 'docker build -t $Imagen .'
@@ -39,8 +45,24 @@ pipeline {
                 sh 'docker rmi $Imagen:latest'
             }
         }
-        stage('Desplegando a otros servidores') {
+        stage('Desplegando un único servidor') {
+            when {
+              expression { false == true }
+            }
             steps {
+                echo "			  Enviando el fichero docker-compose "           
+                sh 'scp -i /home/jenkins/keyHLC docker-compose.yml root@51.178.25.195:/root/HLC/docker/docker-compose.yml'
+                echo "			  Descargando imagen nueva en el servidor de producción"
+                sh 'ssh -i /home/jenkins/keyHLC root@51.178.25.195 docker pull $Imagen'
+                echo "Parando servicios "
+                sh 'ssh -i /home/jenkins/keyHLC root@51.178.25.195 docker-compose -f /root/HLC/docker/docker-compose.yml down'
+                echo "           Arrancando nueva imagen "
+                sh 'ssh -i /home/jenkins/keyHLC root@51.178.25.195 docker-compose -f /root/HLC/docker/docker-compose.yml up -d'
+            }
+          stage('Desplegando con un bucle muchos servidores') {
+            steps {
+                
+                for linea in `cat servidores.txt`; do; echo $linea; done            
                 echo "			  Enviando el fichero docker-compose "           
                 sh 'scp -i /home/jenkins/keyHLC docker-compose.yml root@51.178.25.195:/root/HLC/docker/docker-compose.yml'
                 echo "			  Descargando imagen nueva en el servidor de producción"
