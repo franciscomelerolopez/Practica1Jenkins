@@ -68,7 +68,7 @@ pipeline {
                 script{    
                   //env.text="sh `cat servidores.txt`
                   env.text="51.178.25.195 51.178.25.195"
-                  sh 'echo ${text}'
+                  //sh 'echo ${text}'
                   sh "for value in ${text}; do echo scp -i /home/jenkins/keyHLC docker-compose.yml root@$value:/root/HLC/docker/docker-compose.yml; done"
                   sh "for value in ${text}; do echo $value; done"
                   //do
@@ -83,6 +83,7 @@ pipeline {
                       //sh 'ssh -i /home/jenkins/keyHLC root@51.178.25.195 docker-compose -f /root/HLC/docker/docker-compose.yml up -d'
                   //done
                  }
+               }
             }
         }
     }   
