@@ -59,6 +59,7 @@ pipeline {
                 echo "           Arrancando nueva imagen "
                 sh 'ssh -i /home/jenkins/keyHLC root@51.178.25.195 docker-compose -f /root/HLC/docker/docker-compose.yml up -d'
             }
+          }  
           stage('Desplegando con un bucle muchos servidores') {
             steps {
                 
