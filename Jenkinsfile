@@ -66,8 +66,7 @@ pipeline {
           stage('Desplegando con un bucle muchos servidores') {
             steps {
                 echo "Hola"
-               }
             }
-        }
-    }   
-}
+          }
+        }   
+    }
