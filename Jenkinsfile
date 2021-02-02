@@ -66,8 +66,8 @@ pipeline {
           stage('Desplegando con un bucle muchos servidores') {
             steps {
                 script{    
-                  //env.text="sh `cat servidores.txt`
-                  env.text="51.178.25.195 51.178.25.195`
+                  env.text="sh `cat servidores.txt`"
+                  env.text="51.178.25.195 51.178.25.195"
                   sh 'echo ${text}'
                   sh "for value in ${text}; do echo $value; done"
                 }    
