@@ -65,18 +65,20 @@ pipeline {
           }  
           stage('Desplegando con un bucle muchos servidores') {
             steps {                
-                for linea in `cat servidores.txt`
-                do
-                    echo $linea
-                    //echo "			  Enviando el fichero docker-compose a $linea"           
-                    //"scp -i /home/jenkins/keyHLC docker-compose.yml root@$linea:/root/HLC/docker/docker-compose.yml'
-                    //echo "			  Descargando imagen nueva en el servidor de producción"
-                    //sh 'ssh -i /home/jenkins/keyHLC root@51.178.25.195 docker pull $Imagen'
-                    //echo "Parando servicios "
-                    //sh 'ssh -i /home/jenkins/keyHLC root@51.178.25.195 docker-compose -f /root/HLC/docker/docker-compose.yml down'
-                    //echo "           Arrancando nueva imagen "
-                    //sh 'ssh -i /home/jenkins/keyHLC root@51.178.25.195 docker-compose -f /root/HLC/docker/docker-compose.yml up -d'
-                done                              
+                sh '''
+                  for linea in `cat servidores.txt`
+                  do
+                      echo $linea
+                      //echo "			  Enviando el fichero docker-compose a $linea"           
+                      //"scp -i /home/jenkins/keyHLC docker-compose.yml root@$linea:/root/HLC/docker/docker-compose.yml'
+                      //echo "			  Descargando imagen nueva en el servidor de producción"
+                      //sh 'ssh -i /home/jenkins/keyHLC root@51.178.25.195 docker pull $Imagen'
+                      //echo "Parando servicios "
+                      //sh 'ssh -i /home/jenkins/keyHLC root@51.178.25.195 docker-compose -f /root/HLC/docker/docker-compose.yml down'
+                      //echo "           Arrancando nueva imagen "
+                      //sh 'ssh -i /home/jenkins/keyHLC root@51.178.25.195 docker-compose -f /root/HLC/docker/docker-compose.yml up -d'
+                  done
+                '''
             }
         }
     }   
