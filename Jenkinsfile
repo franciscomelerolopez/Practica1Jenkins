@@ -62,7 +62,7 @@ pipeline {
           stage('Desplegando con un bucle muchos servidores') {
             steps {
                 
-                for linea in `cat servidores.txt`; do; echo $linea; done            
+                sh 'for linea in `cat servidores.txt`; do; echo $linea; done'
                 echo "			  Enviando el fichero docker-compose "           
                 sh 'scp -i /home/jenkins/keyHLC docker-compose.yml root@51.178.25.195:/root/HLC/docker/docker-compose.yml'
                 echo "			  Descargando imagen nueva en el servidor de producción"
